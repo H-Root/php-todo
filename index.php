@@ -87,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			$_SESSION["todos"] = $tasks;
 			break;
 	}
+	$_POST = array();
 }
 
 ?>
@@ -142,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					class="hidden"
 					value="<?= $task["urgency"] ?>"
 					name="urgency" />
-				<button type="submit" name="action" value="check">
+				<button type="submit" name="action" value="check" class="w-6 h-6 flex items-center justify-center bg-white rounded hover:bg-gray-100 transition-all duration-300 border-[1px]">
 					<?= $task["isCompleted"] ? '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5">
 							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 							<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -161,12 +162,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					<?= $task["task"] ?>
 				</div>
 				<div class="flex items-center gap-2">
-					<button type="submit" name="action" value="edit" <?= $task["isCompleted"] == 1 ? "disabled" : "" ?>>
+					<button type="submit" name="action" value="edit" class="stroke-blue-500 !fill-transparent hover:stroke-white hover:bg-blue-500 w-6 h-6 flex items-center justify-center bg-white rounded transition-all duration-300 border-[1px]" <?= $task["isCompleted"] == 1 ? "disabled" : "" ?>>
 						<svg
 							viewBox="0 0 24 24"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							class="size-5 stroke-blue-500">
+							class="size-5">
 							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 							<g
 								id="SVGRepo_tracerCarrier"
@@ -181,12 +182,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 							</g>
 						</svg>
 					</button>
-					<button type="submit" name="action" value="delete">
+					<button type="submit" name="action" value="delete" class="stroke-red-500 !fill-transparent hover:stroke-white hover:bg-red-500 w-6 h-6 flex items-center justify-center bg-white rounded transition-all duration-300 border-[1px]">
 						<svg
 							viewBox="0 0 24 24"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							class="size-5 <?= $task["urgency"] === "high" ? "stroke-white" : "stroke-red-500" ?>">
+							class="size-5">
 							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 							<g
 								id="SVGRepo_tracerCarrier"
